@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Add Song</h1>
+
+
+  <form action="" method="POST">
+    <!-- Django requires the following for security -->
+    {% csrf_token %}
+    <table>
+      <!-- Render the inputs/labels inside of <tr> & <td>s -->
+      {{ form }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form>
+
+{% endblock %}

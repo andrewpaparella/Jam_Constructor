@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Playlist, Song
 
+
 # Create your views here.
 class PlaylistCreate(CreateView):
     model = Playlist
@@ -39,4 +40,8 @@ def songs_detail(request, song_id):
 
 def playlist_index(request):
     playlists = Playlist.objects.all()
-    return render(request, "playlists/index.html", {"playlists": playlists})
+    return render(request, "playlists/index.html", {"playlists": playlists}
+
+class SongCreate(CreateView):
+    model = Song
+    fields = '__all__'
