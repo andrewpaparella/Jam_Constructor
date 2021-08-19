@@ -30,3 +30,13 @@ def about(request):
 def songs_index(request):
     songs = Song.objects.all()
     return render(request, "songs/index.html", {"songs": songs})
+
+
+def songs_detail(request, song_id):
+    song = Song.objects.get(id=song_id)
+    return render(request, "songs/detail.html", {"songs": songs})
+
+
+def playlist_index(request):
+    playlists = Playlist.objects.all()
+    return render(request, "playlists/index.html", {"playlists": playlists})
