@@ -4,12 +4,12 @@
 <h1>Song List</h1>
 
 {% for song in songs %}
-  {% comment %} <a href="{% url 'detail' cat.id %}"> {% endcomment %}
     <div class="card">
         <div class="card-content">
             <span class="card-title">{{ song.name }}</span>
             <p>Artist: {{ song.artist }}</p>
             <p>Year: {{ song.year }}</p>
+            <a href="{% url 'songs_details' song.id %}">Details</a>
         </div>
     </div>
   </a>

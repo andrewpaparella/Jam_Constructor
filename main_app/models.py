@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import CharField, IntegerField, TextField
+from django.urls import reverse
 # Create your models here.
 
 
@@ -12,6 +13,10 @@ class Song(models.Model):
 
     def __string__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("songs_details", kwargs={"song_id": self.id})
+    
 
 class Playlist(models.Model):
     title = CharField(max_length=100)
