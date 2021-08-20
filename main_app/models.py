@@ -4,6 +4,7 @@ from django.db.models.fields import CharField, IntegerField, TextField
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import date, datetime
+
 # Create your models here.
 
 

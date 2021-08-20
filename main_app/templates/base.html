@@ -45,6 +45,9 @@
 
         <div class="navbar-menu" id="more">
           <div class="navbar-end">
+
+            {% if user.is_authenticated %}
+
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Songs</a>
               <div class="navbar-dropdown">
@@ -57,7 +60,7 @@
               </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Plalists</a>
+              <a class="navbar-link">Playlists</a>
               <div class="navbar-dropdown">
                 <a href="{% url 'playlists_create' %}" class="navbar-item">Create Playlist</a>
                 <a href="{% url 'playlists_index' %}" class="navbar-item"
@@ -67,14 +70,20 @@
             </div>
 
             <div class="navbar-item">
-              <button class="button is-primary">Log Out</button>
+                <a href="{% url 'logout' %}" class="button is-info">Logout</a>
             </div>
-            <!-- <div class="navbar-item">
-              <a class="button is-info">Log In</a>
+
+            {% else %}
+
+            <div class="navbar-item">
+              <a href="{% url 'login' %}" class="button is-info">Log In</a>
             </div>
             <div class="navbar-item">
-              <a class="button is-primary">Sign In</a>
-            </div> -->
+              <a href="{% url 'signup' %}" class="button is-primary">Sign Up</a>
+            </div>
+            
+            {% endif %}
+
           </div>
         </div>
       </nav>
