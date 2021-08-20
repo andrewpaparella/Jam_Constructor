@@ -7,29 +7,31 @@
     </div>
   </div>
 </div>
-<div class="box">
-  <div class="container is-fluid">
-    <form class="form" action="" method="POST">
-      {% csrf_token %}
-      <div class="content is-large">
-        <table class="table">
-          {{ form }}
-        </table>
-        <div class="field is-grouped is-right">
-          <p class="control">
-            <input type="submit" value="submit" class="button is-success" />
-          </p>
-          <div class="control">
-            or
+<div class="block">
+<div class="container is-fluid">
+
+    <div class="box">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="content is-large">
+          <table class="table">
+            {{ form }}
+          </table>
+          <div class="level">
+            <div class="level-right">
+              <div class="level-item">
+                <input type="submit" value="submit" class="button is-success" />
+              </div>
+              <div class="level-item">
+                <a href="{% url 'songs_index' %}" class="button is-danger"
+                >cancel</a
+                >
+              </div>
+            </div>
           </div>
-          <p class="control">
-            <a href="{% url 'songs_index' %}" class="button is-danger"
-              >cancel</a
-            >
-          </p>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 

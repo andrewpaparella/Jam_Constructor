@@ -1,26 +1,50 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="block">
+  {% if object %}
+  <div class="hero is-info">
+    <div class="hero-body">
+      <h1 class="title">
+        Edit <strong class="has-text-warning"> {{object.title}}</strong>
+      </h1>
+      <p class="subtitle">Change your playlist however you like</p>
+    </div>
+  </div>
+  {% else %}
+  <div class="hero is-info">
+    <div class="hero-body">
+      <h1 class="title">Create Playlist</h1>
+      <p class="subtitle">Write your playlist's title to get started</p>
+    </div>
+  </div>
+  {% endif %}
+</div>
+<div class="box">
+  <div class="container is-fluid">
+    <form action="" method="POST">
+      <div class="content is-large">
+        {% csrf_token %}
+        <table class="table">
+          {{ form }}
+        </table>
+        <div class="level">
+          <div class="level-item">
+            <input
+              type="submit"
+              value="Get Started"
+              class="button is-success is-large"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
-{% block content %}
+{% if object %}
+<a href="{% url 'playlists_details' object.id %}"> Cancel </a>
+{% endif %}
 
-    {% if object %}
-    <h1> Edit <span class=""> {{object.title}}</span></h1>
-    {% else %}
-    <h1>Add Playlist</h1>
-    {% endif %}
-
-
-  <form action="" method="POST">
-    <!-- Django requires the following for security -->
-    {% csrf_token %}
-    <table>
-      <!-- Render the inputs/labels inside of <tr> & <td>s -->
-      {{ form }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
-
-    {% if object %}
-    <a href="{% url 'playlists_details' object.id %}"> Cancel </a>
-    {% endif %}
-
+<script>
+  document.getElementById("id_title").className = "input is-rounded is-info";
+</script>
 {% endblock %}
