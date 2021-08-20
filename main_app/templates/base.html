@@ -17,6 +17,7 @@
       type="text/css"
       href="{% static 'css/styles.css' %}"
     />
+    <link rel="stylesheet" href="" />
   </head>
   <body>
     <header>
@@ -30,9 +31,10 @@
 
           <a
             role="button"
-            class="navbar-burger"
+            class="navbar-burger burger"
             aria-label="menu"
-            aria-expanded="false"
+            id="aria-expanded"
+            ="false"
             data-target="more"
           >
             <span aria-hidden="true"></span>
@@ -46,45 +48,37 @@
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Songs</a>
               <div class="navbar-dropdown">
-                <a href="{% url 'songs_create' %}" class="navbar-item">Add Song</a>
-                <a href="{% url 'songs_index' %}" class="navbar-item">All Songs</a>
+                <a href="{% url 'songs_create' %}" class="navbar-item"
+                  >Add Song</a
+                >
+                <a href="{% url 'songs_index' %}" class="navbar-item"
+                  >All Songs</a
+                >
               </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Plalists</a>
               <div class="navbar-dropdown">
                 <a href="" class="navbar-item">Create Playlist</a>
-                <a href="{% url 'playlists_index' %}" class="navbar-item">All Playlists</a>
+                <a href="{% url 'playlists_index' %}" class="navbar-item"
+                  >All Playlists</a
+                >
               </div>
             </div>
 
             <div class="navbar-item">
               <button class="button is-primary">Log Out</button>
             </div>
+            <!-- <div class="navbar-item">
+              <a class="button is-info">Log In</a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-primary">Sign In</a>
+            </div> -->
           </div>
         </div>
       </nav>
-      <!-- <nav>
-            <div class="nav-wrapper">
-                <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Jam Constructor</a></li>
-                </ul>
-                <ul class="right">
-                  <li><a href="{% url 'about' %}">About</a></li>
-                  {% comment %} {% if user.is_authenticated %}
-                  <li><a href="{% url 'toys_create' %}">Add a Toy</a></li>
-                  <li><a href="{% url 'toys_index' %}">View All Toys</a></li>{%endcomment%}
-                  <li><a href="{% url 'songs_create' %}">Add a Song</a></li> 
-                  <li><a href="{% url 'songs_index' %}">View All My Songs</a></li>
-                  {% comment %}
-                  <li><a href="{% url 'logout' %}">Log out</a></li>
-                  {% else %}
-                  <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                  <li><a href="{% url 'login' %}">Log In</a></li>
-                  {% endif %} {%endcomment%}
-                </ul>
-            </div>
-        </nav> -->
+      
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="footer">
@@ -95,4 +89,14 @@
       </div>
     </footer>
   </body>
+  <script>
+    const navButton = document.querySelector(
+      "nav .navbar-brand a.navbar-burger.burger[role='button']"
+    );
+
+    navButton.addEventListener("click", function (e) {
+      const navMenu = document.getElementById(e.target.dataset.target);
+      navMenu.classList.toggle("is-active");
+    });
+  </script>
 </html>
