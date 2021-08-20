@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Playlist List</h1>
+
+{% for playlist in playlists %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ playlist.title }}</span>
+            <p>By: {{ playlist.user.name }}</p>
+            {% for song in playlist.song.all %}
+            <p>Song: {{ playlist.song }}</p>
+            <a href="{% url 'songs_details' song.id %}">Song Details</a>
+            {% endfor %}
+            <a href="{% url 'playlists_details' playlist.id %}">Playlist Details</a>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if object %}
+    <h1> Edit <span class=""> {{object.title}}</span></h1>
+    {% else %}
+    <h1>Add Playlist</h1>
+    {% endif %}
+
+
+  <form action="" method="POST">
+    <!-- Django requires the following for security -->
+    {% csrf_token %}
+    <table>
+      <!-- Render the inputs/labels inside of <tr> & <td>s -->
+      {{ form }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form>
+
+    {% if object %}
+    <a href="{% url 'playlists_details' object.id %}"> Cancel </a>
+    {% endif %}
+
+{% endblock %}

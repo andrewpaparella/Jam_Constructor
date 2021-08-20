@@ -18,7 +18,7 @@ class Song(models.Model):
      ],
      help_text="Use the following format: YYYY")
 
-    def __string__(self):
+    def __str__(self):
         return self.name
 
     def get_absolute_url(self):
