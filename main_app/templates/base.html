@@ -12,43 +12,91 @@
       type="text/css"
       href="{% static 'css/bulma.css' %}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+    <link rel="stylesheet" href="" />
   </head>
   <body>
-    <header class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="{% url 'home' %}" class="left brand-logo"
-                >&nbsp;&nbsp;Jam Constructor</a
-              >
-            </li>
-          </ul>
-          <ul class="right">
-            <li><a href="{% url 'about' %}">About</a></li>
-            {% comment %} {% if user.is_authenticated %}
-            <li><a href="{% url 'playlists_create' %}">Add a Playlist</a></li>
-            <li>
-              <a href="{% url 'playlists_index' %}">View All Playlists</a>
-            </li>
-            {%endcomment%}
-            <li><a href="{% url 'songs_create' %}">Add a Song</a></li>
-            <li><a href="{% url 'songs_index' %}">View All My Songs</a></li>
-            {% comment %}
-            <li><a href="{% url 'logout' %}">Log out</a></li>
-            {% else %}
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %} {%endcomment%}
-          </ul>
+    <header>
+      <nav
+        class="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a href="{% url 'home' %}" class="navbar-item">Jam Constructor</a>
+
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            id="aria-expanded"
+            ="false"
+            data-target="more"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="navbar-menu" id="more">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Songs</a>
+              <div class="navbar-dropdown">
+                <a href="{% url 'songs_create' %}" class="navbar-item"
+                  >Add Song</a
+                >
+                <a href="{% url 'songs_index' %}" class="navbar-item"
+                  >All Songs</a
+                >
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Plalists</a>
+              <div class="navbar-dropdown">
+                <a href="{% url 'playlists_create' %}" class="navbar-item">Create Playlist</a>
+                <a href="{% url 'playlists_index' %}" class="navbar-item"
+                  >All Playlists</a
+                >
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <button class="button is-primary">Log Out</button>
+            </div>
+            <!-- <div class="navbar-item">
+              <a class="button is-info">Log In</a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-primary">Sign In</a>
+            </div> -->
+          </div>
         </div>
       </nav>
+      
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">
-        All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="right">
+          All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;
+        </p>
       </div>
     </footer>
   </body>
+  <script>
+    const navButton = document.querySelector(
+      "nav .navbar-brand a.navbar-burger.burger[role='button']"
+    );
+
+    navButton.addEventListener("click", function (e) {
+      const navMenu = document.getElementById(e.target.dataset.target);
+      navMenu.classList.toggle("is-active");
+    });
+  </script>
 </html>
