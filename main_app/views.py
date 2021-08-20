@@ -42,6 +42,12 @@ def songs_details(request, song_id):
 #     playlists = Playlist.objects.all()
 #     return render(request, "playlists/index.html", {"playlists": playlists})
 
+
+def playlists_details(request, playlist_id):
+    playlists = Playlist.objects.get(id=playlist_id)
+    return render(request, "playlists/details.html", {"playlists": playlists})
+
+
 class SongCreate(CreateView):
     model = Song
-    fields = '__all__'
+    fields = "__all__"
