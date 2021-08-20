@@ -25,4 +25,5 @@ urlpatterns = [
         views.PlaylistDelete.as_view(),
         name="playlists_delete",
     ),
+    path('playlists/<int:playlist_id>/add_song/', views.add_song, name='add_song')
 ]

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Playlist Details</h1>
+
+<p> {{ playlist.title }} </p>
+<p> By: {{ playlist.user.name }} </p>
+ {% for song in playlist.song.all %}
+<ul>
+    <li>{{song.name}} by {{song.artist}} </li>
+    <a href="{% url 'songs_details' song.id %}">Song Details</a>
+</ul>
+{% endfor %}
+<h4> Add Song to Playlist </h4>
+<form action="{% url 'add_song' playlist.id %}" method="POST">
+      {% csrf_token %}
+      {{ add_song_form.as_p }}
+      <input type="submit" value="Add Song" class="btn">
+</form>
+
+{% endblock %}
