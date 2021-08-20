@@ -1,30 +1,83 @@
 {% extends 'base.html' %} {% block content %}
-
-<h1>Playlist Details</h1>
-<p>{{ playlist.title }}</p>
-<p>By: {{ playlist.user.username }}</p>
-{% for song in playlist.song.all %}
-<ul>
-  <li>
-  <span><a href="{% url 'songs_details' song.id %}">{{song.name}}</a> - {{song.artist}} </span>
-  </li>
-</ul>
-{% endfor %}
-<div>
-  <a href="{% url 'playlists_update' playlist.id %}">Edit</a>
-  <a href="{% url 'playlists_delete' playlist.id %}">Delete</a>
+<div class="block">
+  <div class="hero is-info">
+    <div class="hero-body">
+      <h1 class="title">Playlist Details</h1>
+      <p class="subtitle">Add songs to your playlist</p>
+    </div>
+  </div>
 </div>
-{% if songs.count %}
-<h4>Add Song to Playlist</h4>
-    {% for song in songs.all %}
+<div class="container is-fluid">
+  <div class="box">
+    <div class="content">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="title is-4">
+              <span class="has-text-link is-capitalized"
+                >{{ playlist.title }}</span
+              >
+            </p>
+          </div>
+          <div class="level-item">
+            <p class="subtitle has-text-grey">{{ playlist.user.username }}</p>
+          </div>
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-warning">
+                  <a
+                    class="has-text-black"
+                    href="{% url 'playlists_update' playlist.id %}"
+                    >Edit</a
+                  >
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-danger">
+                  <a
+                    class="has-text-black"
+                    href="{% url 'playlists_delete' playlist.id %}"
+                    >Delete</a
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% for song in playlist.song.all %}
+      <div class="block">
+        <div class="notification is-primary is-light">
+          <div class="container-is-fluid">
+            <button class="delete">
+              <a href="{% url 'unassoc_song' playlist.id song.id %}"></a>
+            </button>
+            <a class="has-text-grey is-capitalized" href="{% url 'songs_details' song.id %}"><strong>{{song.name}}</strong></a>
+            - <span class="is-capitalized">{{song.artist}}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% if songs.count %}
+      <h4 class="title is-6">Add Song(s) to Playlist</h4>
+      {% for song in songs.all %}
+      <div class="notification is-warning is-light">
+
         <span>{{ song.name }} by {{ song.artist }} </span>
         <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Add Song" class="btn" />
+          {% csrf_token %}
+          <input
+          type="submit"
+          value="Add Song"
+          class="button is-success is-small"
+          />
         </form>
-{% endfor %}
-{% else %}
-<h4> {{playlist.title}} has all available songs </h4>
-{% endif %}
-
-{% endblock %}
+      </div>
+      {% endfor %} {% else %}
+      <h4 class="title">"{{playlist.title}}" has all available songs</h4>
+      {% endif %} {% endblock %}
+    </div>
+  </div>
+</div>
