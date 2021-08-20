@@ -29,7 +29,10 @@ class Playlist(models.Model):
     title = CharField(max_length=100)
 
     song = models.ManyToManyField(Song)
-    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def get_absolute_url(self):
+        return reverse("playlists_details", kwargs={"playlist_id": self.id})
 
 class ReviewPlaylist(models.Model):
     content = TextField(max_length=250)
