@@ -37,6 +37,11 @@ def songs_detail(request, song_id):
     return render(request, "songs/detail.html", {"song": song})
 
 
-def playlist_index(request):
+def playlists_index(request):
     playlists = Playlist.objects.all()
     return render(request, "playlists/index.html", {"playlists": playlists})
+
+
+def playlists_details(request, playlist_id):
+    playlists = Playlist.objects.get(id=playlist_id)
+    return render(request, "playlists/details.html", {"playlists": playlists})
