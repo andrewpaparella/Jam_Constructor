@@ -1,18 +1,70 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jam Constructor</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
-</head>
-<body>
-    <header class="navbar-fixed">
-        <nav>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/bulma.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a href="{% url 'home' %}" class="navbar-item">Jam Constructor</a>
+
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="more"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="navbar-menu" id="more">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Songs</a>
+              <div class="navbar-dropdown">
+                <a href="" class="navbar-item">Add Song</a>
+                <a href="" class="navbar-item">All Songs</a>
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Plalists</a>
+              <div class="navbar-dropdown">
+                <a href="" class="navbar-item">Create Playlist</a>
+                <a href="" class="navbar-item">All Playlists</a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <button class="button is-primary">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- <nav>
             <div class="nav-wrapper">
                 <ul>
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Jam Constructor</a></li>
@@ -32,14 +84,15 @@
                   {% endif %} {%endcomment%}
                 </ul>
             </div>
-        </nav>
+        </nav> -->
     </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
-  	<footer class="page-footer">
-       <div class="right">All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;</div>
+    <main class="container">{% block content %} {% endblock %}</main>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="right">
+          All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;
+        </p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
