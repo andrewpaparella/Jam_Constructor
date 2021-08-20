@@ -1,23 +1,30 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Playlist Details</h1>
-
 <p>{{ playlist.title }}</p>
 <p>By: {{ playlist.user.username }}</p>
 {% for song in playlist.song.all %}
 <ul>
-  <li>{{song.name}} by {{song.artist}}</li>
+  <li>{{song.name}} by {{song.artist}}
   <a href="{% url 'songs_details' song.id %}">Song Details</a>
+  </li>
 </ul>
+{% endfor %}
 <div>
   <a href="{% url 'playlists_update' playlist.id %}">Edit</a>
   <a href="{% url 'playlists_delete' playlist.id %}">Delete</a>
 </div>
-{% endfor %}
+{% if songs.count %}
 <h4>Add Song to Playlist</h4>
-<form action="{% url 'add_song' playlist.id %}" method="POST">
-  {% csrf_token %} {{ add_song_form.as_p }}
-  <input type="submit" value="Add Song" class="btn" />
-</form>
+    {% for song in songs.all %}
+        <span>{{ song.name }} by {{ song.artist }} </span>
+        <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Add Song" class="btn" />
+        </form>
+{% endfor %}
+{% else %}
+<h4> {{playlist.title}} has all available songs </h4>
+{% endif %}
 
 {% endblock %}
