@@ -74,6 +74,7 @@
 
             {% else %}
             <div class="navbar-item">
+              <a href="{% url 'login' %}" class="button is-primary">Log In</a>
               <a href="{% url 'signup' %}" class="button is-primary">Sign Up</a>
             </div>
             {% endif %}
