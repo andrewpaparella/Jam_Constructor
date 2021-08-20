@@ -5,19 +5,19 @@ from .models import Playlist, Song
 
 
 # Create your views here.
-class PlaylistCreate(CreateView):
-    model = Playlist
-    fields = ["title", "song"]
+# class PlaylistCreate(CreateView):
+#     model = Playlist
+#     fields = ["title", "song"]
 
 
-class PlaylistUpdate(UpdateView):
-    model = Playlist
-    fields = ["title", "song"]
+# class PlaylistUpdate(UpdateView):
+#     model = Playlist
+#     fields = ["title", "song"]
 
 
-class PlaylistDelete(DeleteView):
-    model = Playlist
-    success_url = "/playlists/"
+# class PlaylistDelete(DeleteView):
+#     model = Playlist
+#     success_url = "/playlists/"
 
 
 def home(request):
@@ -33,14 +33,14 @@ def songs_index(request):
     return render(request, "songs/index.html", {"songs": songs})
 
 
-def songs_detail(request, song_id):
+def songs_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    return render(request, "songs/detail.html", {"song": song})
+    return render(request, "songs/details.html", {"song": song})
 
 
-def playlist_index(request):
-    playlists = Playlist.objects.all()
-    return render(request, "playlists/index.html", {"playlists": playlists}
+# def playlist_index(request):
+#     playlists = Playlist.objects.all()
+#     return render(request, "playlists/index.html", {"playlists": playlists})
 
 class SongCreate(CreateView):
     model = Song
