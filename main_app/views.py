@@ -12,7 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 class PlaylistCreate(LoginRequiredMixin, CreateView):
     model = Playlist
-    fields = ["title", "song"]
+    fields = ["title"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
