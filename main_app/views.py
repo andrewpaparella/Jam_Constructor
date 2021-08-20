@@ -72,6 +72,11 @@ def assoc_song(request, playlist_id, song_id):
   Playlist.objects.get(id=playlist_id).song.add(song_id)
   return redirect('playlists_details', playlist_id=playlist_id)
 
+@login_required
+def unassoc_song(request, playlist_id, song_id):
+  Playlist.objects.get(id=playlist_id).song.remove(song_id)
+  return redirect('playlists_details', playlist_id=playlist_id)
+
 class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
     fields = "__all__"
