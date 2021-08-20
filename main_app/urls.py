@@ -16,16 +16,17 @@ urlpatterns = [
     ),
     path("playlists/create/", views.PlaylistCreate.as_view(), name="playlists_create"),
     path(
-        "playlists/<int:playlist_id>/update/",
+        "playlists/<int:pk>/update/",
         views.PlaylistUpdate.as_view(),
         name="playlists_update",
     ),
     path(
-        "playlists/<int:playlist_id>/delete",
+        "playlists/<int:pk>/delete",
         views.PlaylistDelete.as_view(),
         name="playlists_delete",
     ),
-    path('playlists/<int:playlist_id>/add_song/', views.add_song, name='add_song'),
+    # path('playlists/<int:playlist_id>/add_song/', views.add_song, name='add_song'),
+    path("playlists/<int:playlist_id>/assoc_song/<int:song_id>/", views.assoc_song, name="assoc_song"),
 
     path('accounts/signup/', views.signup, name='signup')
 ]

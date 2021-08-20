@@ -54,18 +54,23 @@ def playlists_index(request):
 @login_required
 def playlists_details(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
+    songs_playlist_doesnt_have = Song.objects.exclude(id__in = playlist.song.all().values_list('id'))
     add_song_form = AddSongForm()
-    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form})
+    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'songs' : songs_playlist_doesnt_have})
+
+# @login_required
+# def add_song(request, playlist_id):
+#     form = AddSongForm(request.POST)
+#     if form.is_valid():
+#         new_song = form.save(commit=False)
+#         new_song.playlist_id = playlist_id
+#         new_song.save()
+#     return redirect('playlists_details', playlist_id=playlist_id)
 
 @login_required
-def add_song(request, playlist_id):
-    form = AddSongForm(request.POST)
-    if form.is_valid():
-        new_song = form.save(commit=False)
-        new_song.playlist_id = playlist_id
-        new_song.save()
-    return redirect('playlists_details', playlist_id=playlist_id)
-
+def assoc_song(request, playlist_id, song_id):
+  Playlist.objects.get(id=playlist_id).song.add(song_id)
+  return redirect('playlists_details', playlist_id=playlist_id)
 
 class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
