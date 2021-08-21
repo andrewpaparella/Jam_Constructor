@@ -10,11 +10,6 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/styles.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
       href="{% static 'css/bulma.css' %}"
     />
   </head>
@@ -85,9 +80,18 @@
         </div>
       </nav>
     </header>
-    <div class="block">
+
+    <div class="section" style="background-color: #0b0b0c;
+    opacity: 0.8;
+    background-image: repeating-radial-gradient(
+        circle at 0 0,
+        transparent 0,
+        #0b0b0c 40px
+      ),
+      repeating-linear-gradient(#f7455655, #f74556);">
       <main class="container">{% block content %} {% endblock %}</main>
     </div>
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p class="right">
