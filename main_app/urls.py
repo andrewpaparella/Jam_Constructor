@@ -28,6 +28,6 @@ urlpatterns = [
     # path('playlists/<int:playlist_id>/add_song/', views.add_song, name='add_song'),
     path("playlists/<int:playlist_id>/assoc_song/<int:song_id>/", views.assoc_song, name="assoc_song"),
     path("playlists/<int:playlist_id>/unassoc_song/<int:song_id>/", views.unassoc_song, name="unassoc_song"),
-
-    path('accounts/signup/', views.signup, name='signup')
+    path("playlists/<int:playlist_id>/add_playlistreview/", views.add_playlistreview, name="add_playlistreview"),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
