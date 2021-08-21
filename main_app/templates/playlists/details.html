@@ -82,7 +82,33 @@
       </div>
       {% endfor %} {% else %}
       <h4 class="title">"{{playlist.title}}" has all available songs</h4>
-      {% endif %} {% endblock %}
+      {% endif %} 
+      <div>
+                <h1> Leave a Review </h1>
+                <form action="{% url 'add_playlistreview' playlist.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ add_reviewplaylist_form.as_p }}
+                <input type="submit" value="Add Review" class="btn">
+                </form>
+                    <table class="striped">
+                <thead>
+                    <tr><th>Review</th><th>Rating</th><th>User</th></tr>
+                </thead>
+                <tbody>
+                    {% for review in playlist.reviewplaylist_set.all %}
+                    <tr>
+                        <td>{{review.content}}</td>
+                        <td>{{review.rating}}</td>
+                        <td>{{review.user.username}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+      {% endblock %}
     </div>
   </div>
 </div>
+
+
+
