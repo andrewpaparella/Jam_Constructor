@@ -1,20 +1,43 @@
-{% extends 'base.html' %}
-{% block content %}
-
-<h1>Playlist List</h1>
+{% extends 'base.html' %} {% block content %}
+<div class="hero">
+  <div class="hero-body">
+    <h1 class="title has-text-white">Playlists</h1>
+  </div>
+</div>
 
 {% for playlist in playlists %}
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ playlist.title }}</span>
-            <p>By: {{ playlist.user.username }}</p>
-            {% for song in playlist.song.all %}
-            <p>Song: {{ song.name }}</p>
-            {% endfor %}
-            <a href="{% url 'playlists_details' playlist.id %}">Playlist Details</a>
+<div class="notification is-link is-light">
+  <div class="container is-fluid">
+    <div class="content">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <span class="title is-6 has-text-dark">{{ playlist.title }}</span>
+          </div>
         </div>
-    </div>
-  </a>
-{% endfor %}
+        <div class="level-right">
+          <div class="level-item">
+            <p>{{ playlist.user.username }}</p>
+          </div>
+          <div class="level-item">
+            <a
+              href="{% url 'playlists_details' playlist.id %}"
+              class="is-pulled-right button is-info is-small is-rounded"
+              >details</a
+            >
+          </div>
+        </div>
+      </div>
 
-{% endblock %}
+      {% for song in playlist.song.all %}
+      <div class="tag is-dark">
+        <p>
+          <strong class="has-text-warning">{{ song.name }}</strong> - {{song.artist}}
+        </p>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}
