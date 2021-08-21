@@ -1,4 +1,4 @@
-from main_app.forms import AddReviewPlaylistForm, AddSongForm
+from main_app.forms import AddReviewPlaylistForm, AddSongForm, AddReviewSongForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -43,7 +43,8 @@ def songs_index(request):
 @login_required
 def songs_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    return render(request, "songs/details.html", {"song": song})
+    add_reviewsong_form = AddReviewSongForm()
+    return render(request, "songs/details.html", {"song": song, 'add_reviewsong_form': add_reviewsong_form})
 
 
 @login_required
@@ -76,6 +77,15 @@ def add_playlistreview(request, playlist_id):
         new_review_playlist.user_id = request.user.id
         new_review_playlist.save()
     return redirect('playlists_details', playlist_id=playlist_id)
+
+def add_songreview(request, song_id):
+    form = AddReviewSongForm(request.POST)
+    if form.is_valid():
+        new_review_song = form.save(commit=False)
+        new_review_song.song_id = song_id
+        new_review_song.user_id = request.user.id
+        new_review_song.save()
+    return redirect('songs_details', song_id=song_id)
 
 @login_required
 def assoc_song(request, playlist_id, song_id):

@@ -42,8 +42,20 @@ class Playlist(models.Model):
 class ReviewPlaylist(models.Model):
     content = TextField(max_length=250)
     rating = IntegerField(max_length=1)
+    date = models.DateField(auto_now_add=True, blank=True)
 
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+
+class ReviewSong(models.Model):
+    content = TextField(max_length=250)
+    rating = IntegerField(max_length=1)
+    date = models.DateField(auto_now_add=True, blank=True)
+
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
