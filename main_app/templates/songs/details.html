@@ -21,11 +21,12 @@
                 </form>
                     <table class="striped">
                 <thead>
-                    <tr><th>Review</th><th>Rating</th><th>User</th></tr>
+                    <tr><th>Date</th><th>Review</th><th>Rating</th><th>User</th></tr>
                 </thead>
                 <tbody>
                     {% for review in song.reviewsong_set.all %}
                     <tr>
+                        <td>{{review.date}}</td>
                         <td>{{review.content}}</td>
                         <td>{{review.rating}}</td>
                         <td>{{review.user.username}}</td>

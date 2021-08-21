@@ -50,6 +50,9 @@ class ReviewPlaylist(models.Model):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        ordering = ['-date']
+
 class ReviewSong(models.Model):
     content = TextField(max_length=250)
     rating = IntegerField(max_length=1)
@@ -60,3 +63,6 @@ class ReviewSong(models.Model):
         User,
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        ordering = ['-date']
