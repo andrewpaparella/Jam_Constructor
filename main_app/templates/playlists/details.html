@@ -52,11 +52,16 @@
       <div class="block">
         <div class="notification is-primary is-light">
           <div class="container-is-fluid">
-            <button class="delete">
-              <a href="{% url 'unassoc_song' playlist.id song.id %}"></a>
-            </button>
             <a class="has-text-grey is-capitalized" href="{% url 'songs_details' song.id %}"><strong>{{song.name}}</strong></a>
             - <span class="is-capitalized">{{song.artist}}</span>
+            <form action="{% url 'unassoc_song' playlist.id song.id %}" method="POST" class="right">
+          {% csrf_token %}
+          <input
+          type="submit"
+          value="Remove Song"
+          class="button is-success is-small right"
+          />
+        </form>
           </div>
         </div>
       </div>
