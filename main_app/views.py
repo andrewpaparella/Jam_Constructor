@@ -1,4 +1,4 @@
-from main_app.forms import AddSongForm
+from main_app.forms import AddReviewPlaylistForm, AddSongForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -56,7 +56,8 @@ def playlists_details(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
     songs_playlist_doesnt_have = Song.objects.exclude(id__in = playlist.song.all().values_list('id'))
     add_song_form = AddSongForm()
-    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'songs' : songs_playlist_doesnt_have})
+    add_reviewplaylist_form = AddReviewPlaylistForm()
+    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'add_reviewplaylist_form': add_reviewplaylist_form,'songs' : songs_playlist_doesnt_have})
 
 # @login_required
 # def add_song(request, playlist_id):
@@ -66,6 +67,15 @@ def playlists_details(request, playlist_id):
 #         new_song.playlist_id = playlist_id
 #         new_song.save()
 #     return redirect('playlists_details', playlist_id=playlist_id)
+
+def add_playlistreview(request, playlist_id):
+    form = AddReviewPlaylistForm(request.POST)
+    if form.is_valid():
+        new_review_playlist = form.save(commit=False)
+        new_review_playlist.playlist_id = playlist_id
+        new_review_playlist.user_id = request.user.id
+        new_review_playlist.save()
+    return redirect('playlists_details', playlist_id=playlist_id)
 
 @login_required
 def assoc_song(request, playlist_id, song_id):
