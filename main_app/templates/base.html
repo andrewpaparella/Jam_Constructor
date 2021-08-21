@@ -12,12 +12,6 @@
       type="text/css"
       href="{% static 'css/bulma.css' %}"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/styles.css' %}"
-    />
-    <link rel="stylesheet" href="" />
   </head>
   <body>
     <header>
@@ -28,7 +22,9 @@
       >
         <div class="navbar-brand">
           <a href="{% url 'home' %}" class="navbar-item">
-            <strong class="has-text-primary">Jam Constructor</strong>
+            <strong class="has-text-primary is-family-monospace"
+              >JAM CONSTRUCTOR</strong
+            >
           </a>
 
           <a
@@ -62,7 +58,9 @@
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Playlists</a>
               <div class="navbar-dropdown">
-                <a href="{% url 'playlists_create' %}" class="navbar-item">Create Playlist</a>
+                <a href="{% url 'playlists_create' %}" class="navbar-item"
+                  >Create Playlist</a
+                >
                 <a href="{% url 'playlists_index' %}" class="navbar-item"
                   >All Playlists</a
                 >
@@ -81,9 +79,19 @@
           </div>
         </div>
       </nav>
-      
     </header>
-    <main class="container">{% block content %} {% endblock %}</main>
+
+    <div class="section" style="background-color: #0b0b0c;
+    opacity: 0.8;
+    background-image: repeating-radial-gradient(
+        circle at 0 0,
+        transparent 0,
+        #0b0b0c 40px
+      ),
+      repeating-linear-gradient(#f7455655, #f74556);">
+      <main class="container">{% block content %} {% endblock %}</main>
+    </div>
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p class="right">
@@ -96,7 +104,6 @@
     const navButton = document.querySelector(
       "nav .navbar-brand a.navbar-burger.burger[role='button']"
     );
-
     navButton.addEventListener("click", function (e) {
       const navMenu = document.getElementById(e.target.dataset.target);
       navMenu.classList.toggle("is-active");
