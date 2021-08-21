@@ -1,19 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 <div class="block">
   {% if object %}
-  <div class="hero is-info">
+  <div class="hero">
     <div class="hero-body">
       <h1 class="title">
-        Edit <strong class="has-text-warning"> {{object.title}}</strong>
+        Edit <strong class="has-text-white"> {{object.title}}</strong>
       </h1>
       <p class="subtitle">Change your playlist however you like</p>
     </div>
   </div>
   {% else %}
-  <div class="hero is-info">
+  <div class="hero">
     <div class="hero-body">
-      <h1 class="title">Create Playlist</h1>
-      <p class="subtitle">Write your playlist's title to get started</p>
+      <h1 class="title has-text-white">Create Playlist</h1>
+      <p class="subtitle has-text-white">Write your playlist's title to get started</p>
     </div>
   </div>
   {% endif %}

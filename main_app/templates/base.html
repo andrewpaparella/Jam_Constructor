@@ -22,7 +22,7 @@
       >
         <div class="navbar-brand">
           <a href="{% url 'home' %}" class="navbar-item">
-            <strong class="has-text-primary is-family-monospace"
+            <strong class="title has-text-primary is-family-monospace"
               >JAM CONSTRUCTOR</strong
             >
           </a>
@@ -81,18 +81,23 @@
       </nav>
     </header>
 
-    <div class="section" style="background-color: #0b0b0c;
-    opacity: 0.8;
-    background-image: repeating-radial-gradient(
-        circle at 0 0,
-        transparent 0,
-        #0b0b0c 40px
-      ),
-      repeating-linear-gradient(#f7455655, #f74556);">
+    <div
+      class="section"
+      style="
+        background-color: #4e4eea;
+        opacity: 0.8;
+        background-image: repeating-radial-gradient(
+            circle at 0 0,
+            transparent 0,
+            #191616 40px
+          ),
+          repeating-linear-gradient(#fb8b9755, #f74556);
+      "
+    >
       <main class="container">{% block content %} {% endblock %}</main>
     </div>
 
-    <footer class="footer">
+    <footer>
       <div class="content has-text-centered">
         <p class="right">
           All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;

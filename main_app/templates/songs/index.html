@@ -1,18 +1,30 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<h1>Song List</h1>
+<div class="hero">
+  <div class="hero-body">
+    <h1 class="title has-text-white">Songs</h1>
+  </div>
+</div>
 
 {% for song in songs %}
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ song.name }}</span>
-            <p>Artist: {{ song.artist }}</p>
-            <p>Year: {{ song.year }}</p>
-            <a href="{% url 'songs_details' song.id %}">Details</a>
+<div class="notification is-info is-light">
+  <div class="container is-fluid">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <span class="card-title">{{ song.name }}</span>
         </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <a class="is-pulled-right button is-info is-small is-rounded" href="{% url 'songs_details' song.id %}">Details</a>
+        </div>
+      </div>
     </div>
-  </a>
-{% endfor %}
+    <p>Artist: {{ song.artist }}</p>
+    <p>Album: {{ song.album }}</p>
+    <p>Released: {{ song.year }}</p>
+  </div>
+</div>
 
-{% endblock %}
+{% endfor %} {% endblock %}
