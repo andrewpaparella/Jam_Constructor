@@ -20,13 +20,14 @@
     </div>
   </div>
 </div>
+
 <div class="block">
   <div class="box">
     <div class="content">
       <table class="table is-rounded">
-      {% if playlist.user.id == user.id %}
-      <a href="{% url 'songs_update' song.id %}">Edit</a>
-      {% endif %}
+        {% if playlist.user.id == user.id %}
+        <a href="{% url 'songs_update' song.id %}">Edit</a>
+        {% endif %}
         <thead>
           <tr>
             <th>Title</th>
@@ -47,6 +48,20 @@
     </div>
   </div>
 </div>
+
+{% if song.youtube %}
+<div class="block">
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="content">
+        <a class="title has-text-link" href="{{ song.youtube }}"
+          >Play on Youtube</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <div class="box">
   <div class="block">
