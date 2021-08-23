@@ -2,7 +2,9 @@
 <div class="hero">
   <div class="hero-body">
     <h1 class="title has-text-white">{{ playlist.title }} Details</h1>
+    {% if playlist.user.id == user.id %}
     <p class="subtitle has-text-white">Add songs to your playlist</p>
+    {% endif %}
   </div>
 </div>
 <div class="container is-fluid">
@@ -26,6 +28,7 @@
         {% if playlist.user.id == user.id %}
           <div class="level-item">
             <div class="field is-grouped">
+              {% if playlist.user.id == user.id %}
               <div class="control">
                 <button class="button is-warning">
                   <a
@@ -64,6 +67,7 @@
                   <span class="is-capitalized"> - {{song.artist}}</span>
                 </div>
               </div>
+              {% if playlist.user.id == user.id %}
               <div class="level-right">
                 <div class="level-item">
                   <form
@@ -79,6 +83,7 @@
                   </form>
                 </div>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -98,6 +103,7 @@
               <span>{{ song.name }} - {{ song.artist }} </span>
             </div>
           </div>
+          {% if playlist.user.id == user.id %}
           <div class="level-right">
             <div class="level-item">
               <form
@@ -113,6 +119,7 @@
               </form>
             </div>
           </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %} {% else %}

@@ -2,14 +2,31 @@
 
 <div class="hero">
   <div class="hero-body">
-    <h1 class="title has-text-white">Song Details</h1>
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <h1 class="title has-text-white">Song Details</h1>
+        </div>
+      </div>
+      {% if song.user.id == user.id %}
+      <div class="level-right">
+        <div class="level-item">
+          <a href="{% url 'songs_update' song.id %}" class="button is-warning"
+            >Edit</a
+          >
+        </div>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 <div class="block">
   <div class="box">
     <div class="content">
       <table class="table is-rounded">
-        <a href="{% url 'songs_update' song.id %}">Edit</a>
+      {% if playlist.user.id == user.id %}
+      <a href="{% url 'songs_update' song.id %}">Edit</a>
+      {% endif %}
         <thead>
           <tr>
             <th>Title</th>
@@ -34,7 +51,7 @@
 <div class="box">
   <div class="block">
     <div class="container is-fluid">
-      <h1 class="title is-6">Leave a Review</h1>
+      <h1 class="title is-5">Leave a Review</h1>
       <form action="{% url 'add_songreview' song.id %}" method="POST">
         {% csrf_token %}
         <div class="content is-large">
