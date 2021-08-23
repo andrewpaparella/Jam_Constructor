@@ -105,6 +105,10 @@ class SongCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class SongUpdate(LoginRequiredMixin, UpdateView):
+    model = Song
+    fields = ["youtube"]
+
 def signup(request):
     error_message = ""
     if request.method == "POST":
