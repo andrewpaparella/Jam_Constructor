@@ -24,6 +24,10 @@
 <div class="block">
   <div class="box">
     <div class="content">
+      <table class="table is-rounded">
+        {% if playlist.user.id == user.id %}
+        <a href="{% url 'songs_update' song.id %}">Edit</a>
+        {% endif %}
       <table class="table">
         <thead>
           <tr>
@@ -89,6 +93,9 @@
         <td>{{review.content}}</td>
         <td>{{review.rating}}</td>
         <td>{{review.user.username}}</td>
+        <td>
+          <a href="{% url 'delete_songreview' song.id review.id %}">DELETE</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
