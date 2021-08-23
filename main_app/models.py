@@ -45,9 +45,17 @@ class Playlist(models.Model):
     def get_absolute_url(self):
         return reverse("playlists_details", kwargs={"playlist_id": self.id})
 
+RATE = (
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5')
+)
+
 class ReviewPlaylist(models.Model):
-    content = TextField(max_length=250)
-    rating = IntegerField(max_length=1)
+    content = models.TextField(max_length=250)
+    rating = models.IntegerField(default=RATE[0][0], choices=RATE)
     date = models.DateField(auto_now_add=True, blank=True)
 
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
@@ -59,9 +67,10 @@ class ReviewPlaylist(models.Model):
     class Meta:
         ordering = ['-date']
 
+
 class ReviewSong(models.Model):
-    content = TextField(max_length=250)
-    rating = IntegerField(max_length=1)
+    content = models.TextField(max_length=250)
+    rating = models.IntegerField(default=RATE[0][0], choices=RATE)
     date = models.DateField(auto_now_add=True, blank=True)
 
     song = models.ForeignKey(Song, on_delete=models.CASCADE)
