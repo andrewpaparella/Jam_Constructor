@@ -37,17 +37,13 @@
       <h1 class="title is-6">Leave a Review</h1>
       <form action="{% url 'add_songreview' song.id %}" method="POST">
         {% csrf_token %}
-
-<<<<<<< HEAD
         <div class="content is-large">
-          <div class="table">{{ add_reviewsong_form.as_p }}</div>
+          <div>{{ add_reviewsong_form.as_p }}</div>
         </div>
         <input type="submit" value="Add Review" class="button is-success" />
       </form>
     </div>
   </div>
-=======
->>>>>>> 221393799ad2e6408c4f9e48fb4c10f1cdf12bd6
   <table class="table">
     <thead>
       <tr>
