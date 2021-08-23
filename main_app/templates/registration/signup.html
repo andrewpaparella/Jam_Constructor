@@ -1,13 +1,30 @@
 {% extends 'base.html' %} {% block content %}
+<div class="block">
+  <div class="hero">
+    <div class="hero-body">
+      <h1 class="title has-text-white">Sign Up</h1>
+      {% if error_message %}
+      <p class="subtitle has-text-danger">{{ error_message }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
-<h1>Sign Up</h1>
-
-{% if error_message %}
-<p class="red-text">{{ error_message }}</p>
-{% endif %}
 <form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" class="btn" value="signup" />
+  {% csrf_token %} 
+  <div class="box">
+    <div class="content is-large">
+
+      {{ form.as_p }}
+      <input type="submit" class="button is-success" value="Sign Up" />
+    </div>
+  </div>
 </form>
+
+<script>
+  document.getElementById('id_username').className = 'input'
+  document.getElementById('id_password1').className = 'input'
+  document.getElementById('id_password2').className = 'input'
+</script>
 
 {% endblock %}
