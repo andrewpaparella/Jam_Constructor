@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="hero">
   <div class="hero-body">
-    <h1 class="title has-text-white">{{ playlist.title }} Details</h1>
     {% if playlist.user.id == user.id %}
     <p class="subtitle has-text-white">Add songs to your playlist</p>
     {% endif %}
@@ -15,7 +14,7 @@
           <div class="level-item">
             <p class="title is-4">
               <span
-                class="has-text-info-light is-capitalized is-family-sans-serif"
+                class="has-text-warning is-capitalized is-family-sans-serif"
                 >{{ playlist.title }}</span
               >
             </p>

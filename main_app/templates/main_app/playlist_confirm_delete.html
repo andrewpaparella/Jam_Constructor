@@ -1,11 +1,32 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Delete Playlist</h1>
+<div class="box">
+  <div class="hero">
+    <div class="hero-body">
+      <h1 class="title">Delete Playlist</h1>
+      <h4 class="subtitle">
+        Are you sure you want to delete {{ object.name }}?
+      </h4>
+    </div>
+  </div>
 
-<h4>Are you sure you want to delete {{ object.name }}?</h4>
-
-<form action="" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="Yes - Delete!" class="btn" />
-  <a href="{% url 'playlists_details' object.id %}">Cancel</a>
-</form>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="container is-fluid">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <input
+              type="submit"
+              value="Yes - Delete!"
+              class="button is-danger"
+            />
+          </div>
+          <div class="level-item">
+            <a href="{% url 'playlists_details' object.id %}">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 {% endblock %}

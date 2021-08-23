@@ -24,10 +24,7 @@
 <div class="block">
   <div class="box">
     <div class="content">
-      <table class="table is-rounded">
-        {% if playlist.user.id == user.id %}
-        <a href="{% url 'songs_update' song.id %}">Edit</a>
-        {% endif %}
+      <table class="table">
         <thead>
           <tr>
             <th>Title</th>
