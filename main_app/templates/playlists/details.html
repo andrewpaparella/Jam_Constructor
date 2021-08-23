@@ -23,6 +23,7 @@
           </div>
         </div>
         <div class="level-right">
+        {% if playlist.user.id == user.id %}
           <div class="level-item">
             <div class="field is-grouped">
               <div class="control">
@@ -43,6 +44,7 @@
                   >
                 </button>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -130,11 +132,12 @@
                 </form>
                     <table class="striped">
                 <thead>
-                    <tr><th>Review</th><th>Rating</th><th>User</th></tr>
+                    <tr><th>Date</th><th>Review</th><th>Rating</th><th>User</th></tr>
                 </thead>
                 <tbody>
                     {% for review in playlist.reviewplaylist_set.all %}
                     <tr>
+                        <td>{{review.date}}</td>
                         <td>{{review.content}}</td>
                         <td>{{review.rating}}</td>
                         <td>{{review.user.username}}</td>

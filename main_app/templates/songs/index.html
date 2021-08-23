@@ -16,8 +16,17 @@
         </div>
       </div>
       <div class="level-right">
+        <div clas="level-item">
+          <div class="container is-fluid">
+            <p>{{ song.user }}</p>
+          </div>
+        </div>
         <div class="level-item">
-          <a class="is-pulled-right button is-info is-small is-rounded" href="{% url 'songs_details' song.id %}">Details</a>
+          <a
+            class="button is-info is-small is-rounded"
+            href="{% url 'songs_details' song.id %}"
+            >Details</a
+          >
         </div>
       </div>
     </div>

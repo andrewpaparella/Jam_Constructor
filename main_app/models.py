@@ -19,6 +19,12 @@ class Song(models.Model):
           MaxValueValidator(datetime.now().year)
      ],
      help_text="Use the following format: YYYY")
+    youtube = models.URLField(blank=True)
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.name
@@ -50,6 +56,9 @@ class ReviewPlaylist(models.Model):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        ordering = ['-date']
+
 class ReviewSong(models.Model):
     content = TextField(max_length=250)
     rating = IntegerField(max_length=1)
@@ -60,3 +69,6 @@ class ReviewSong(models.Model):
         User,
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        ordering = ['-date']
