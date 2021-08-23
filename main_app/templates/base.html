@@ -46,8 +46,8 @@
             {% if user.is_authenticated %}
             <div class="navbar-item">
               <p>
-                Welcome
-                <span class="has-text-primary-dark">{{user.username}}</span>
+
+                Welcome <span class="has-text-primary-dark">{{user.username}}</span>
               </p>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
@@ -78,7 +78,7 @@
 
             {% else %}
             <div class="navbar-item">
-              <a href="{% url 'login' %}" class="button is-primary">Log In</a>
+              <a href="{% url 'login' %}" class="mx-2 button is-primary">Log In</a>
               <a href="{% url 'signup' %}" class="button is-primary">Sign Up</a>
             </div>
             {% endif %}
