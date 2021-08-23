@@ -99,7 +99,11 @@ def unassoc_song(request, playlist_id, song_id):
 
 class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
-    fields = "__all__"
+    fields = ["name", 'artist', 'album', 'year']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 def signup(request):
     error_message = ""
