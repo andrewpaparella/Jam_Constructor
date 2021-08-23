@@ -44,6 +44,12 @@
         <div class="navbar-menu" id="more">
           <div class="navbar-end">
             {% if user.is_authenticated %}
+            <div class="navbar-item">
+              <p>
+                Welcome
+                <span class="has-text-primary-dark">{{user.username}}</span>
+              </p>
+            </div>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Songs</a>
               <div class="navbar-dropdown">
