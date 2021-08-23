@@ -23,6 +23,7 @@
           </div>
         </div>
         <div class="level-right">
+        {% if playlist.user.id == user.id %}
           <div class="level-item">
             <div class="field is-grouped">
               <div class="control">
@@ -34,7 +35,6 @@
                   >
                 </button>
               </div>
-              <!-- {% if song.user.id == user.id %} -->
               <div class="control">
                 <button class="button is-danger">
                   <a
@@ -44,7 +44,7 @@
                   >
                 </button>
               </div>
-              <!-- {% endif %} -->
+              {% endif %}
             </div>
           </div>
         </div>
