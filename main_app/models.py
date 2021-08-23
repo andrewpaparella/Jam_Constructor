@@ -19,6 +19,12 @@ class Song(models.Model):
           MaxValueValidator(datetime.now().year)
      ],
      help_text="Use the following format: YYYY")
+    youtube = models.URLField(blank=True)
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.name
