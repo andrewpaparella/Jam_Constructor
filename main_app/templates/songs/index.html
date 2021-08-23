@@ -12,7 +12,7 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <span class="card-title">{{ song.name }}</span>
+          <span class="title is-5">{{ song.name }}</span>
         </div>
       </div>
       <div class="level-right">
@@ -30,9 +30,28 @@
         </div>
       </div>
     </div>
-    <p>Artist: {{ song.artist }}</p>
-    <p>Album: {{ song.album }}</p>
-    <p>Released: {{ song.year }}</p>
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <div>
+            <p class="title is-6 has-text-link">Artist: {{ song.artist }}</p>
+            <p class="title is-6 has-text-success-dark">Album: {{ song.album }}</p>
+            <p class="title is-6 has-text-danger">Released: {{ song.year }}</p>
+          </div>
+        </div>
+      </div>
+      {% if song.youtube %}
+      <div class="level-right">
+        <div class="level-item">
+          <figure class="image is-51x50">
+            <a href="{{ song.youtube }}">
+              <img src="https://i.imgur.com/uuKEGQa.png" />
+            </a>
+          </figure>
+        </div>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
