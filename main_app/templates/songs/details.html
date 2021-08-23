@@ -32,7 +32,7 @@
 
 <div class="box">
 
-  <h1 class="">Leave a Review</h1>
+  <h1 class="title is-6">Leave a Review</h1>
   <form action="{% url 'add_songreview' song.id %}" method="POST">
     {% csrf_token %} {{ add_reviewsong_form.as_p }}
     <input type="submit" value="Add Review" class="btn" />
