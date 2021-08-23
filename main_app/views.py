@@ -35,24 +35,23 @@ def home(request):
 def about(request):
     return render(request, "about.html")
 
-@login_required
+
 def songs_index(request):
     songs = Song.objects.all()
     return render(request, "songs/index.html", {"songs": songs})
 
-@login_required
+
 def songs_details(request, song_id):
     song = Song.objects.get(id=song_id)
     add_reviewsong_form = AddReviewSongForm()
     return render(request, "songs/details.html", {"song": song, 'add_reviewsong_form': add_reviewsong_form})
 
 
-@login_required
 def playlists_index(request):
     playlists = Playlist.objects.all()
     return render(request, "playlists/index.html", {"playlists": playlists})
 
-@login_required
+
 def playlists_details(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
     songs_playlist_doesnt_have = Song.objects.exclude(id__in = playlist.song.all().values_list('id'))
@@ -68,7 +67,7 @@ def playlists_details(request, playlist_id):
 #         new_song.playlist_id = playlist_id
 #         new_song.save()
 #     return redirect('playlists_details', playlist_id=playlist_id)
-
+@login_required
 def add_playlistreview(request, playlist_id):
     form = AddReviewPlaylistForm(request.POST)
     if form.is_valid():
@@ -77,7 +76,8 @@ def add_playlistreview(request, playlist_id):
         new_review_playlist.user_id = request.user.id
         new_review_playlist.save()
     return redirect('playlists_details', playlist_id=playlist_id)
-
+    
+@login_required
 def add_songreview(request, song_id):
     form = AddReviewSongForm(request.POST)
     if form.is_valid():
