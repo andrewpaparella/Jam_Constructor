@@ -24,9 +24,9 @@
   <div class="box">
     <div class="content">
       <table class="table is-rounded">
-      {% if playlist.user.id == user.id %}
-      <a href="{% url 'songs_update' song.id %}">Edit</a>
-      {% endif %}
+        {% if playlist.user.id == user.id %}
+        <a href="{% url 'songs_update' song.id %}">Edit</a>
+        {% endif %}
         <thead>
           <tr>
             <th>Title</th>
@@ -77,6 +77,9 @@
         <td>{{review.content}}</td>
         <td>{{review.rating}}</td>
         <td>{{review.user.username}}</td>
+        <td>
+          <a href="{% url 'delete_songreview' song.id review.id %}">DELETE</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

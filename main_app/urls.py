@@ -27,5 +27,9 @@ urlpatterns = [
     path("playlists/<int:playlist_id>/add_playlistreview/", views.add_playlistreview, name="add_playlistreview"),
     path("songs/<int:song_id>/add_songreview/", views.add_songreview, name="add_songreview"),
     path("songs/<int:pk>/update/", views.SongUpdate.as_view(), name="songs_update"),
+    path("songs/<int:song_id>/delete_songreview/<int:review_id>/", views.delete_songreview, name="delete_songreview"),
     path('accounts/signup/', views.signup, name='signup'),
 ]
+
+#songs/<int:pk>/review/<int:review_id>/delete_songreview
+#songs/<int:song_id>/delete_songreview/<int:review_id>/

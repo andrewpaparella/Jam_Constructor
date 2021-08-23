@@ -64,7 +64,7 @@ class ReviewSong(models.Model):
     rating = IntegerField(max_length=1)
     date = models.DateField(auto_now_add=True, blank=True)
 
-    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

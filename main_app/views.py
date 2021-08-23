@@ -2,7 +2,7 @@ from main_app.forms import AddReviewPlaylistForm, AddSongForm, AddReviewSongForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Playlist, Song
+from .models import Playlist, ReviewSong, Song
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -85,6 +85,13 @@ def add_songreview(request, song_id):
         new_review_song.song_id = song_id
         new_review_song.user_id = request.user.id
         new_review_song.save()
+    return redirect('songs_details', song_id=song_id)
+
+@login_required
+def delete_songreview(request, song_id, review_id):
+    s = Song.objects.get(id=song_id)
+    review = ReviewSong.objects.get(id=review_id)
+    s.reviewsong_set.remove(review)
     return redirect('songs_details', song_id=song_id)
 
 @login_required
