@@ -58,7 +58,7 @@ class ReviewPlaylist(models.Model):
     rating = models.IntegerField(default=RATE[0][0], choices=RATE)
     date = models.DateField(auto_now_add=True, blank=True)
 
-    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

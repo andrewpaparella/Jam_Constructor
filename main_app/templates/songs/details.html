@@ -93,9 +93,11 @@
         <td>{{review.content}}</td>
         <td>{{review.rating}}</td>
         <td>{{review.user.username}}</td>
+        {% if review.user.id == user.id %}
         <td>
           <a href="{% url 'delete_songreview' song.id review.id %}">DELETE</a>
         </td>
+        {% endif %}
       </tr>
       {% endfor %}
     </tbody>

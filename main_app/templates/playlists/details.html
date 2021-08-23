@@ -32,7 +32,7 @@
                   <a
                     class="has-text-black"
                     href="{% url 'playlists_update' playlist.id %}"
-                    >Edit</a
+                    >Edit Title</a
                   >
                 </button>
               </div>
@@ -160,6 +160,11 @@
         <td>{{review.content}}</td>
         <td>{{review.rating}}</td>
         <td>{{review.user.username}}</td>
+        {% if review.user.id == user.id %}
+        <td>
+          <a href="{% url 'delete_playlistreview' playlist.id review.id %}">DELETE</a>
+        </td>
+        {% endif %}
       </tr>
       {% endfor %}
     </tbody>

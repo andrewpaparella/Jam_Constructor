@@ -2,7 +2,7 @@ from main_app.forms import AddReviewPlaylistForm, AddSongForm, AddReviewSongForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Playlist, ReviewSong, Song
+from .models import Playlist, ReviewSong, Song, ReviewPlaylist
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -20,7 +20,7 @@ class PlaylistCreate(LoginRequiredMixin, CreateView):
 
 class PlaylistUpdate(LoginRequiredMixin, UpdateView):
     model = Playlist
-    fields = ["title", "song"]
+    fields = ["title"]
 
 
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
@@ -93,6 +93,13 @@ def delete_songreview(request, song_id, review_id):
     review = ReviewSong.objects.get(id=review_id)
     s.reviewsong_set.remove(review)
     return redirect('songs_details', song_id=song_id)
+
+@login_required
+def delete_playlistreview(request, playlist_id, review_id):
+    p = Playlist.objects.get(id=playlist_id)
+    review = ReviewPlaylist.objects.get(id=review_id)
+    p.reviewplaylist_set.remove(review)
+    return redirect('playlists_details', playlist_id=playlist_id)    
 
 @login_required
 def assoc_song(request, playlist_id, song_id):
