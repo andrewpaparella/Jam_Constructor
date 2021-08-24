@@ -9,5 +9,5 @@ class SongFilter(django_filters.FilterSet):
 
     class Meta:
         model = Song
-        fields = [ 'name', 'album', 'artist' ]
+        fields = [ 'name', 'artist', 'album' ]
     
