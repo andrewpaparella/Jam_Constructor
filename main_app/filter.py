@@ -4,6 +4,8 @@ import django_filters
 
 class SongFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
+    album = django_filters.CharFilter(lookup_expr='icontains')
+    artist = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Song
