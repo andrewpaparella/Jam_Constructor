@@ -5,8 +5,12 @@
     <h1 class="title has-text-white">Songs</h1>
   </div>
 </div>
-
-{% for song in songs %}
+<form method="get">
+  {{ songfilter.form.as_p }}
+  <input type="submit" />
+</form>
+{% for song in songfilter.qs %} {{ song }} {{ song.id }}<br />
+{% endfor %} {% for song in songs %}
 <div class="notification is-info is-light">
   <div class="container is-fluid">
     <div class="level">
@@ -33,7 +37,6 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-         
           <div>
             <p class="title is-6 has-text-info">Artist: {{ song.artist }}</p>
             <p class="title is-6 has-text-info">Album: {{ song.album }}</p>
