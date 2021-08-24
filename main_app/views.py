@@ -59,7 +59,8 @@ def playlists_details(request, playlist_id):
     songs_playlist_doesnt_have = Song.objects.exclude(id__in = playlist.song.all().values_list('id'))
     add_song_form = AddSongForm()
     add_reviewplaylist_form = AddReviewPlaylistForm()
-    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'add_reviewplaylist_form': add_reviewplaylist_form,'songs' : songs_playlist_doesnt_have})
+    s = SongFilter(request.GET, queryset=Song.objects.all())
+    return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'add_reviewplaylist_form': add_reviewplaylist_form,'songs' : songs_playlist_doesnt_have, "songfilter": s})
 
 @login_required
 def playlists_personal(request):
