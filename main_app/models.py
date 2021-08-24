@@ -20,7 +20,6 @@ class Song(models.Model):
           MaxValueValidator(datetime.now().year)
      ],
      help_text="Use the following format: YYYY")
-    # youtube = models.URLField(blank=True)
     video = EmbedVideoField()
 
     user = models.ForeignKey(

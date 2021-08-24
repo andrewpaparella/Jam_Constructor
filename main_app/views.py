@@ -1,3 +1,4 @@
+from main_app.filter import SongFilter
 from main_app.forms import AddReviewPlaylistForm, AddSongForm, AddReviewSongForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -38,7 +39,8 @@ def about(request):
 
 def songs_index(request):
     songs = Song.objects.all()
-    return render(request, "songs/index.html", {"songs": songs})
+    s = SongFilter(request.GET, queryset=Song.objects.all())
+    return render(request, "songs/index.html", {"songs": songs, "songfilter": s})
 
 
 def songs_details(request, song_id):
