@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import date, datetime
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from embed_video.fields import EmbedVideoField
 # Create your models here.
 
 User = get_user_model()
@@ -19,7 +20,8 @@ class Song(models.Model):
           MaxValueValidator(datetime.now().year)
      ],
      help_text="Use the following format: YYYY")
-    youtube = models.URLField(blank=True)
+    # youtube = models.URLField(blank=True)
+    video = EmbedVideoField()
 
     user = models.ForeignKey(
         User,

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load embed_video_tags %}
 
 <div class="hero">
   <div class="hero-body">
@@ -50,14 +50,15 @@
   </div>
 </div>
 
-{% if song.youtube %}
+{% if song.video %}
 <div class="block">
   <div class="box">
     <div class="container is-fluid">
       <div class="content">
-        <a class="title has-text-link" href="{{ song.youtube }}"
-          >Play on Youtube</a
-        >
+        {% video song.video as my_video %}
+
+          {% video my_video "medium" %}
+        {% endvideo %}
       </div>
     </div>
   </div>

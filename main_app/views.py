@@ -121,7 +121,7 @@ class SongCreate(LoginRequiredMixin, CreateView):
 
 class SongUpdate(LoginRequiredMixin, UpdateView):
     model = Song
-    fields = ["youtube"]
+    fields = ["video"]
 
 def signup(request):
     error_message = ""
