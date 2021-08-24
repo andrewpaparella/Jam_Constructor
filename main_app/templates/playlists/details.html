@@ -89,12 +89,11 @@
       {% endfor %} 
       
     <form method="get">
-  {{ songfilter.form.as_p }}
+    {{ songfilter.form.as_p }}
     <input type="submit" />
     </form>
     {% for song in songfilter.qs %} {{ song }} {{ song.id }}<br />
     {% endfor %}
-
       {% if songs.count %}
       <h4 class="title is-6 has-text-white">
         Add Song(s) to
@@ -139,6 +138,7 @@
 </div>
 {% endif %}
 {% endif %}
+
 
 <div class="box">
   <div class="block">
