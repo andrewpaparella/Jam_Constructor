@@ -59,14 +59,12 @@ def playlists_details(request, playlist_id):
     add_reviewplaylist_form = AddReviewPlaylistForm()
     return render(request, "playlists/details.html", {"playlist": playlist, 'add_song_form': add_song_form, 'add_reviewplaylist_form': add_reviewplaylist_form,'songs' : songs_playlist_doesnt_have})
 
-# @login_required
-# def add_song(request, playlist_id):
-#     form = AddSongForm(request.POST)
-#     if form.is_valid():
-#         new_song = form.save(commit=False)
-#         new_song.playlist_id = playlist_id
-#         new_song.save()
-#     return redirect('playlists_details', playlist_id=playlist_id)
+@login_required
+def playlists_personal(request):
+    user = request.user
+    playlists = user.playlist_set.all()
+    return render(request, "playlists/personal.html", {"playlists": playlists})
+
 @login_required
 def add_playlistreview(request, playlist_id):
     form = AddReviewPlaylistForm(request.POST)
