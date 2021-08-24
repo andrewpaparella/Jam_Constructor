@@ -87,13 +87,16 @@
         </div>
       </div>
       {% endfor %} 
-      
-    <form method="get">
-    {{ songfilter.form.as_p }}
-    <input type="submit" />
-    </form>
-    {% for song in songfilter.qs %} {{ song }} {{ song.id }}<br />
-    {% endfor %}
+      <div class="box">
+        <div class="content is-small">
+          <form method="get">
+          {{ songfilter.form.as_p }}
+          <input class="button is-small is-link" value="Filter" type="submit" />
+          </form>
+
+        </div>
+      </div>
+    
       {% if songs.count %}
       <h4 class="title is-6 has-text-white">
         Add Song(s) to
@@ -102,12 +105,12 @@
         >
       </h4>
       {% if playlist.user.id == user.id %}
-      {% for song in songs.all %}
+      {% for song in songfilter.qs %}
       <div class="notification is-warning is-light">
         <div class="level">
           <div class="level-left">
             <div class="level-item">
-              <span>{{ song.name }} - {{ song.artist }} </span>
+              <span>{{ song.name }} - {{ song.artist }} - {{ song.album }} </span>
             </div>
           </div>
           {% if playlist.user.id == user.id %}
@@ -183,5 +186,8 @@
 <script>
   document.getElementById("id_content").className = "textarea is-small";
   document.getElementById("id_rating").className = "select";
+  document.getElementById("id_name").className = "input is-small";
+  document.getElementById("id_artist").className = "input is-small";
+  document.getElementById("id_album").className = "input is-small";
 </script>
 {% endblock %}

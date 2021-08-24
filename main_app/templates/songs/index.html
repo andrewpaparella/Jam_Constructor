@@ -64,59 +64,11 @@
   </div>
 </div>
 
-{% endfor %} {% for song in songs %}
-<div class="notification is-info is-light">
-  <div class="container is-fluid">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <span class="title is-5">{{ song.name }}</span>
-        </div>
-      </div>
-      <div class="level-right">
-        <div clas="level-item">
-          <div class="container is-fluid">
-            <p>{{ song.user }}</p>
-          </div>
-        </div>
-        <div class="level-item">
-          <a
-            class="button is-info is-small is-rounded"
-            href="{% url 'songs_details' song.id %}"
-            >Details</a
-          >
-        </div>
-      </div>
-    </div>
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <div>
-            <p class="title is-6 has-text-info">Artist: {{ song.artist }}</p>
-            <p class="title is-6 has-text-info">Album: {{ song.album }}</p>
-            <p class="title is-6 has-text-info">Released: {{ song.year }}</p>
-          </div>
-        </div>
-      </div>
-      {% if song.youtube %}
-      <div class="level-right">
-        <div class="level-item">
-          <figure class="image is-51x50">
-            <a href="{{ song.youtube }}">
-              <img src="https://i.imgur.com/uuKEGQa.png" />
-            </a>
-          </figure>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
+{% endfor %}
 <script>
   document.getElementById("id_name").className = "input is-small";
   document.getElementById("id_album").className = "input is-small";
   document.getElementById("id_artist").className = "input is-small";
 </script>
 
-{% endfor %} {% endblock %}
+{% endblock %}
