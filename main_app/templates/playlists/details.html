@@ -86,7 +86,16 @@
           </div>
         </div>
       </div>
-      {% endfor %} {% if songs.count %}
+      {% endfor %} 
+      
+    <form method="get">
+  {{ songfilter.form.as_p }}
+    <input type="submit" />
+    </form>
+    {% for song in songfilter.qs %} {{ song }} {{ song.id }}<br />
+    {% endfor %}
+
+      {% if songs.count %}
       <h4 class="title is-6 has-text-white">
         Add Song(s) to
         <span class=" title is-5 has-text-white is-capitalized"
