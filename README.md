@@ -1,7 +1,6 @@
 # Jam_Constructor
 
-# Jam Constructor
-​
+
 Registration:
 <img width="1434" alt="registration" src="https://user-images.githubusercontent.com/84999855/131008499-4769599c-abdd-42c8-be8f-c42f0ea98c0c.png">
 Home Page:
