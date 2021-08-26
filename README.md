@@ -3,27 +3,28 @@
 # Jam Constructor
 ​
 Registration:
-![Screenshot](/public/images/registration.png)
+<img width="1434" alt="registration" src="https://user-images.githubusercontent.com/84999855/131008499-4769599c-abdd-42c8-be8f-c42f0ea98c0c.png">
 Home Page:
-![Screenshot](/public/images/home.png)
+<img width="1679" alt="home" src="https://user-images.githubusercontent.com/84999855/131008510-fceb1152-0fad-40be-92e5-d113027676fd.png">
 Create Playlist:
-![Screenshot](/public/images/createplaylist.png)
+<img width="1680" alt="createplaylist" src="https://user-images.githubusercontent.com/84999855/131008581-636c67bd-fbd0-44b6-9009-8e7897d25376.png">
 Playlist List:
-![Screenshot](/public/images/playlist.png)
+<img width="1679" alt="playlist" src="https://user-images.githubusercontent.com/84999855/131008601-1976041e-6394-43bc-bd0d-90082f0491d1.png">
 Playlist Detail:
-![Screenshot](/public/images/playlistdetail.png)
+<img width="1680" alt="playlistdetail" src="https://user-images.githubusercontent.com/84999855/131008630-79b0ccd5-9307-4544-8a21-7e8b7d0f2eba.png">
 Playlist Review:
-![Screenshot](/public/images/playlistreview.png)
+<img width="1424" alt="playlistreview" src="https://user-images.githubusercontent.com/84999855/131008655-8d3b684a-15a0-40cd-ab73-98f0b6965c97.png">
 Add Song:
-![Screenshot](/public/images/addsong.png)
+<img width="1680" alt="addsong" src="https://user-images.githubusercontent.com/84999855/131008723-9bf5128c-a2db-4a20-88b1-93554184b794.png">
 Song List:
-![Screenshot](/public/images/songlist.png)
+<img width="1677" alt="songlist" src="https://user-images.githubusercontent.com/84999855/131008748-7153ef46-1d7b-4f03-b832-ee7fba00a5ff.png">
 Song Detail:
-![Screenshot](/public/images/songdetail.png)
+<img width="1432" alt="songdetail" src="https://user-images.githubusercontent.com/84999855/131008775-f215097e-5084-4bf9-9638-631feaae13f4.png">
 Song Review:
-![Screenshot](/public/images/songreview.png)
+<img width="1425" alt="songreview" src="https://user-images.githubusercontent.com/84999855/131008792-581a4a15-c083-4bf5-9bad-bbce37dd6b6f.png">
 My Playlist:
-![Screenshot](/public/images/myplaylist.png)
+<img width="1679" alt="myplaylist" src="https://user-images.githubusercontent.com/84999855/131008820-52e48f98-540b-4e09-a647-fb71836bed5b.png">
+
 ​
 ## Overview :
 ​
