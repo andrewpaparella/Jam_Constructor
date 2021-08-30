@@ -21,7 +21,6 @@ urlpatterns = [
         name="playlists_update",
     ),
     path("playlists/<int:pk>/delete", views.PlaylistDelete.as_view(), name="playlists_delete"),
-    # path('playlists/<int:playlist_id>/add_song/', views.add_song, name='add_song'),
     path("playlists/<int:playlist_id>/assoc_song/<int:song_id>/", views.assoc_song, name="assoc_song"),
     path("playlists/<int:playlist_id>/unassoc_song/<int:song_id>/", views.unassoc_song, name="unassoc_song"),
     path("playlists/<int:playlist_id>/add_playlistreview/", views.add_playlistreview, name="add_playlistreview"),
@@ -32,6 +31,3 @@ urlpatterns = [
     path("playlists/personal", views.playlists_personal, name="playlists_personal"),
     path('accounts/signup/', views.signup, name='signup'),
 ]
-
-#songs/<int:pk>/review/<int:review_id>/delete_songreview
-#songs/<int:song_id>/delete_songreview/<int:review_id>/
