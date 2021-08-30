@@ -3,9 +3,6 @@
   <div class="hero">
     <div class="hero-body">
       <h1 class="title has-text-white">Sign Up</h1>
-      {% if error_message %}
-      <p class="subtitle has-text-danger">{{ error_message }}</p>
-      {% endif %}
     </div>
   </div>
 </div>
@@ -14,7 +11,9 @@
   {% csrf_token %} 
   <div class="box">
     <div class="content is-large">
-
+      {% if error_message %}
+      <p class="subtitle has-text-danger">{{ error_message }}</p>
+      {% endif %}
       {{ form.as_p }}
       <input type="submit" class="button is-success" value="Sign Up" />
     </div>
