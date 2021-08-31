@@ -1,29 +1,34 @@
 {% extends 'base.html' %} {% block content %}
 <div class="block">
-  <div class="hero">
+  <div
+    style="border-radius: 6px; width: 1000px"
+    class="hero is-success mt-4 mx-auto"
+  >
     <div class="hero-body">
       <h1 class="title has-text-white">Sign Up</h1>
     </div>
   </div>
 </div>
 
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %} 
-  <div class="box">
-    <div class="content is-large">
+
+<div style="width: 900px" class="box mx-auto">
+  <form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <div class="content">
       {% if error_message %}
       <p class="subtitle has-text-danger">{{ error_message }}</p>
       {% endif %}
+
       {{ form.as_p }}
-      <input type="submit" class="button is-success" value="Sign Up" />
+      <input type="submit" class="button is-large is-success" value="Sign Up" />
     </div>
-  </div>
-</form>
+  </form>
+</div>
 
 <script>
-  document.getElementById('id_username').className = 'input'
-  document.getElementById('id_password1').className = 'input'
-  document.getElementById('id_password2').className = 'input'
+  document.getElementById("id_username").className = "input";
+  document.getElementById("id_password1").className = "input";
+  document.getElementById("id_password2").className = "input";
 </script>
 
 {% endblock %}

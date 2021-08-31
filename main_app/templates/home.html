@@ -13,14 +13,42 @@
             </figure>
           </div>
           <div class="level-item">
-            <span class="title has-text-white">
-              Welcome To The Jam Constructor
-            </span>
+            <div class="box">
+              <p class="title has-text-dark has-text-centered">
+                Welcome To Jam Constructor
+              </p>
+              <h3 class="subtitle is-4 has-text-centered mb-auto">
+                <a href="{% url 'playlists_create' %}">Create a playlist</a> or
+                <a href="{% url 'songs_create' %}">add a song</a> to get started!
+              </h3>
+            </div>
           </div>
           <div class="level-item">
             <figure class="image is-236x190">
               <img class="is-rounded" src="https://i.imgur.com/QmKDxPj.gif" />
             </figure>
+          </div>
+        </div>
+      </div>
+      <div class="container is-fluid">
+        <div class="columns is-mobile">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="level">
+              <div class="level-item">
+                <a href="{% url 'playlists_details' playlists.id %}">
+                  <div class="box px-auto is-relative">
+                    <h1 class="subtitle is-3 has-text-centered">
+                      <span class="title is-6">Recent Playlist:</span>
+                      {{playlists.title}}
+                      <span class="subtitle is-5">by</span>
+                      <span class="subtitle is-4 has-text-info"
+                        >{{playlists.user.username}}</span
+                      >
+                    </h1>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
