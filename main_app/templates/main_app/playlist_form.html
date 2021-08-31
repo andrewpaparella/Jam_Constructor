@@ -1,42 +1,57 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="block">
-  {% if object %}
-  <div class="hero">
+  <div class="container is-fluid mt-3">
+    {% if object %}
+    <div
+    style="border-radius: 6px; width: 1000px"
+    class="hero is-black mx-auto"
+    >
     <div class="hero-body">
       <h1 class="title">
-        Edit <strong class="has-text-white"> {{object.title}}</strong>
+        Edit <strong class="has-text-warning"> {{object.title}}</strong>
       </h1>
-      <p class="subtitle">Change your playlist however you like</p>
     </div>
   </div>
   {% else %}
-  <div class="hero">
+  <div class="block">
+    <div
+    style="border-radius: 6px; width: 1000px"
+    class="hero is-black mx-auto"
+    >
     <div class="hero-body">
       <h1 class="title has-text-white">Create Playlist</h1>
-      <p class="subtitle has-text-white">Write your playlist's title to get started</p>
+      <p class="subtitle has-text-white">
+        Write your playlist's title to get started
+      </p>
     </div>
   </div>
-  {% endif %}
 </div>
-<div class="box">
+</div>
+</div>
+{% endif %}
+<section class="section">
+<div class="block">
   <div class="container is-fluid">
-    <form action="" method="POST">
-      <div class="content is-large">
-        {% csrf_token %}
-        <table class="table">
-          {{ form }}
-        </table>
-        <div class="level">
-          <div class="level-item">
-            <input
+    <div style="width: 1000px" class="box mx-auto">
+      <form action="" method="POST">
+        <div class="content is-large">
+          {% csrf_token %}
+          <table class="table">
+            {{ form }}
+          </table>
+          <div class="level">
+            <div class="level-item">
+              <input
               type="submit"
               value="Get Started"
               class="button is-success is-large"
-            />
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -44,6 +59,7 @@
 <a href="{% url 'playlists_details' object.id %}"> Cancel </a>
 {% endif %}
 
+</section>
 <script>
   document.getElementById("id_title").className = "input is-rounded is-info";
 </script>

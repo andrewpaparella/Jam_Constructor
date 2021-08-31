@@ -1,62 +1,73 @@
 {% extends 'base.html' %} {% block content %}
-<div class="hero">
-  <div class="hero-body">
-    {% if playlist.user.id == user.id %}
-    <p class="title has-text-white">Add songs to your playlist</p>
-    {% endif %}
+<div class="block">
+  <div class="container is-fluid mt-3">
+    <div
+      style="border-radius: 6px; width: 1000px"
+      class="hero is-black mx-auto"
+    >
+      <div class="hero-body">
+        {% if playlist.user.id == user.id %}
+        <p class="title">Add songs to your playlist</p>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </div>
 <div class="container is-fluid">
-  <div class="content">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <p class="title is-4">
-            <span class="has-text-warning is-capitalized is-family-sans-serif"
-              >{{ playlist.title }}</span
-            >
-          </p>
-        </div>
-        <div class="level-item">
-          <p class="subtitle has-text-white">{{ playlist.user.username }}</p>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          {% if playlist.user.id == user.id %}
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-warning">
-                <a
-                  class="has-text-black"
-                  href="{% url 'playlists_update' playlist.id %}"
-                  >Edit Title</a
+  <div class="box mx-auto" style="width: 1000px">
+    <div class="content">
+      <div class="level">
+        <div class="notification is-white">
+          <div class="level-left">
+            <div class="level-item">
+              <p class="title is-3">
+                <span class="is-capitalized is-family-sans-serif"
+                  >{{ playlist.title }}</span
                 >
-              </button>
+              </p>
             </div>
-            <div class="control">
-              <button class="button is-danger">
-                <a
-                  class="has-text-black"
-                  href="{% url 'playlists_delete' playlist.id %}"
-                  >Delete</a
-                >
-              </button>
+            <div class="level-item">
+              <p class="subtitle">{{ playlist.user.username }}</p>
             </div>
-            {% endif %}
+          </div>
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            {% if playlist.user.id == user.id %}
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-warning is-rounded">
+                  <a
+                    class="has-text-weight-medium has-text-black"
+                    href="{% url 'playlists_update' playlist.id %}"
+                    >Edit Title</a
+                  >
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-danger is-rounded">
+                  <a
+                    class="has-text-weight-medium has-text-black"
+                    href="{% url 'playlists_delete' playlist.id %}"
+                    >Delete Playlist</a
+                  >
+                </button>
+              </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
     </div>
     {% for song in playlist.song.all %}
     <div class="block">
-      <div class="notification is-primary is-light">
+      <div class="notification is-primary">
         <div class="container-is-fluid">
           <div class="level">
             <div class="level-left">
               <div class="level-item">
                 <a
-                  class="has-text-grey is-capitalized"
+                  class="has-text-weight-bold is-capitalized"
                   href="{% url 'songs_details' song.id %}"
                   ><strong>{{song.name}}</strong></a
                 >
@@ -85,16 +96,20 @@
       </div>
     </div>
     {% endfor %} {% if playlist.user.id == user.id %}
-    <div class="box">
-      <div class="content is-small">
-        <form method="get">
-          {{ songfilter.form.as_p }}
-          <input class="button is-small is-link" value="Filter" type="submit" />
-        </form>
+  </div>
+  <div class="box mx-auto" style="width: 1000px">
+    <div class="columns">
+      <div class="column is-three-fifths">
+        <div class="content is-small">
+          <form method="get">
+            {{ songfilter.form.as_p }}
+            <input class="button is-link" value="Filter" type="submit" />
+          </form>
+        </div>
       </div>
     </div>
     {% endif %} {% if playlist.user.id == user.id %}
-    <h4 class="title is-6 has-text-white">
+    <h4 class="title is-6 has-text-weight-bold">
       Add Song(s) to
       <span class="title is-5 has-text-white is-capitalized"
         >{{playlist.title}}</span
@@ -102,7 +117,7 @@
     </h4>
     {% if playlist.user.id == user.id %} {% for song in songfilter.qs %}
     <div class="block">
-      <div class="notification is-warning is-light">
+      <div class="notification is-warning">
         <div class="level">
           <div class="level-left">
             <div class="level-item">
@@ -133,63 +148,64 @@
       {% endfor %}
     </div>
   </div>
+  {% endif %} {% endif %}
 </div>
-{% endif %} {% endif %}
 
 <div class="block">
-  <div class="box">
+  <div class="box mt-3 mx-auto" style="width: 1000px">
     <div class="container is-fluid">
       <div class="block">
-        <div class="container is-fluid">
-          <h1 class="title is-5">Leave a Review</h1>
-          <form
-            action="{% url 'add_playlistreview' playlist.id %}"
-            method="POST"
-          >
-            {% csrf_token %}
-            <div class="content is-large">
-              <div>{{ add_reviewplaylist_form.as_p }}</div>
-            </div>
-            <input type="submit" value="Add Review" class="button is-success" />
-          </form>
-        </div>
+        <h1 class="title is-5">Leave a Review</h1>
+        <form action="{% url 'add_playlistreview' playlist.id %}" method="POST">
+          {% csrf_token %}
+
+          <div class="content is-large">
+            <div>{{ add_reviewplaylist_form.as_p }}</div>
+          </div>
+          <input type="submit" value="Add Review" class="button is-success" />
+        </form>
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
-            <th>User</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for review in playlist.reviewplaylist_set.all %}
-          <tr>
-            <td>{{review.date}}</td>
-            <td>{{review.content}}</td>
-            <td>{{review.rating}}</td>
-            <td>{{review.user.username}}</td>
-            {% if review.user.id == user.id %}
-            <td>
-              <a href="{% url 'delete_playlistreview' playlist.id review.id %}"
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Review</th>
+              <th>Rating</th>
+              <th>User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for review in playlist.reviewplaylist_set.all %}
+            <tr>
+              <td>{{review.date}}</td>
+              <td>{{review.content}}</td>
+              <td>{{review.rating}}</td>
+              <td>{{review.user.username}}</td>
+              {% if review.user.id == user.id %}
+              <td>
+                <a
+                class="button is-small is-danger"
+                href="{% url 'delete_playlistreview' playlist.id review.id %}"
                 >DELETE</a
-              >
-            </td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
+                >
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  {% endfor %}
-
-  <script>
-    document.getElementById("id_content").className = "textarea is-small";
-    document.getElementById("id_rating").className = "select";
-    document.getElementById("id_name").className = "input is-small";
-    document.getElementById("id_artist").className = "input is-small";
-    document.getElementById("id_album").className = "input is-small";
-  </script>
-  {% endblock %}
 </div>
+
+
+<script>
+  document.getElementById("id_content").className = "textarea is-small";
+  document.getElementById("id_rating").className = "select";
+  document.getElementById("id_name").className = "input is-small";
+  document.getElementById("id_artist").className = "input is-small";
+  document.getElementById("id_album").className = "input is-small";
+</script>
+{% endblock %}

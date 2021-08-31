@@ -13,100 +13,118 @@
       href="{% static 'css/bulma.css' %}"
     />
   </head>
-  <body>
+  <body style="
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background: radial-gradient(
+      circle,
+      transparent 20%,
+      #e5e5f7 20%,
+      #e5e5f7 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        #e5e5f7 20%,
+        #e5e5f7 80%,
+        transparent 80%,
+        transparent
+      )
+      100px 100px,
+    linear-gradient(#444cf7 8px, transparent 8px) 0 -4px,
+    linear-gradient(90deg, #444cf7 8px, #e5e5f7 8px) -4px 0;
+  background-size: 200px 200px, 200px 200px, 100px 100px, 100px 100px;
+">
+    
     <header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a href="{% url 'home' %}" class="navbar-item">
-            <strong class="title has-text-primary is-family-monospace"
-              >JAM CONSTRUCTOR</strong
+        <nav
+          class="navbar is-black"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
+            <a href="{% url 'home' %}" class="navbar-item">
+              <strong class="title has-text-primary is-family-monospace"
+                >JAM CONSTRUCTOR</strong
+              >
+            </a>
+
+            <a
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              id="aria-expanded"
+              ="false"
+              data-target="more"
             >
-          </a>
-
-          <a
-            role="button"
-            class="navbar-burger burger"
-            aria-label="menu"
-            id="aria-expanded"
-            ="false"
-            data-target="more"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div class="navbar-menu" id="more">
-          <div class="navbar-end">
-            {% if user.is_authenticated %}
-            <div class="navbar-item">
-              <p>
-
-                Welcome <span class="has-text-primary-dark">{{user.username}}</span>
-              </p>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Songs</a>
-              <div class="navbar-dropdown">
-                <a href="{% url 'songs_create' %}" class="navbar-item"
-                  >Add Song</a
-                >
-                <a href="{% url 'songs_index' %}" class="navbar-item"
-                  >All Songs</a
-                >
-              </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Playlists</a>
-              <div class="navbar-dropdown">
-                <a href="{% url 'playlists_create' %}" class="navbar-item"
-                  >Create Playlist</a
-                >
-                <a href="{% url 'playlists_index' %}" class="navbar-item"
-                  >All Playlists</a
-                >
-                <a href="{% url 'playlists_personal' %}" class="navbar-item"
-                  >My Playlists</a
-                >
-              </div>
-            </div>
-            <div class="navbar-item">
-              <a href="{% url 'logout' %}" class="button is-info">Logout</a>
-            </div>
-
-            {% else %}
-            <div class="navbar-item">
-              <a href="{% url 'login' %}" class="mx-2 button is-primary">Log In</a>
-              <a href="{% url 'signup' %}" class="button is-primary">Sign Up</a>
-            </div>
-            {% endif %}
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-        </div>
-      </nav>
-    </header>
 
-    <div
-      class="section"
-      style="
-        background-color: #4e4eea;
-        opacity: 0.8;
-        background-image: repeating-radial-gradient(
-            circle at 0 0,
-            transparent 0,
-            #191616 40px
-          ),
-          repeating-linear-gradient(#fb8b9755, #f74556);
-      "
-    >
-      <main class="container">{% block content %} {% endblock %}</main>
-    </div>
+          <div class="navbar-menu" id="more">
+            <div class="navbar-end">
+              {% if user.is_authenticated %}
+              <div class="navbar-item">
+                <p>
+                  Welcome
+                  <span class="has-text-primary-dark">{{user.username}}</span>
+                </p>
+              </div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Songs</a>
+                <div class="navbar-dropdown">
+                  <a href="{% url 'songs_create' %}" class="navbar-item"
+                    >Add Song</a
+                  >
+                  <a href="{% url 'songs_index' %}" class="navbar-item"
+                    >All Songs</a
+                  >
+                </div>
+              </div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Playlists</a>
+                <div class="navbar-dropdown">
+                  <a href="{% url 'playlists_create' %}" class="navbar-item"
+                    >Create Playlist</a
+                  >
+                  <a href="{% url 'playlists_index' %}" class="navbar-item"
+                    >All Playlists</a
+                  >
+                  <a href="{% url 'playlists_personal' %}" class="navbar-item"
+                    >My Playlists</a
+                  >
+                </div>
+              </div>
+              <div class="navbar-item">
+                <a href="{% url 'logout' %}" class="button is-info">Logout</a>
+              </div>
 
-    <footer>
+              {% else %}
+              <div class="navbar-item">
+                <a href="{% url 'login' %}" class="mx-2 button is-primary"
+                  >Log In</a
+                >
+                <a href="{% url 'signup' %}" class="button is-primary"
+                  >Sign Up</a
+                >
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+        <div class="block"></div>
+      </header>
+    
+
+    
+      <main>{% block content %} {% endblock %}</main>
+    
+
+    <footer style="background-color: white;">
       <div class="content has-text-centered">
         <p class="right">
           All Rights Reserved, &copy; 2021 Jam Constructor &nbsp;

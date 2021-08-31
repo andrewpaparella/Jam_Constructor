@@ -1,6 +1,5 @@
 from main_app.filter import SongFilter
 from main_app.forms import AddReviewPlaylistForm, AddSongForm, AddReviewSongForm
-from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Playlist, ReviewSong, Song, ReviewPlaylist
@@ -30,7 +29,8 @@ class PlaylistDelete(LoginRequiredMixin, DeleteView):
 
 
 def home(request):
-    return render(request, "home.html")
+    playlists = Playlist.objects.last()
+    return render(request, "home.html", {'playlists': playlists})
 
 
 def about(request):
