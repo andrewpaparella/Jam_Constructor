@@ -44,7 +44,7 @@ Visit and Try Our App: [Jam Constructor](https://jam-constructor.herokuapp.com/)
 <li>Django
 <li>PostgreSQL
 ​
-## Future Enhancements :
+## Future enhancements:
 ​
 <li> User to add album covers to each songs.
 <li> User to be able to see the reveiw section for playlist easier withouth scrolling all the way down.
