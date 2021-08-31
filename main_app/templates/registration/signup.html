@@ -14,7 +14,7 @@
 <div style="width: 900px" class="box mx-auto">
   <form method="POST" action="{% url 'signup' %}">
     {% csrf_token %}
-    <div class="content">
+    <div class="content signupsheet">
       {% if error_message %}
       <p class="subtitle has-text-danger">{{ error_message }}</p>
       {% endif %}
