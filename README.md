@@ -44,6 +44,7 @@ Visit and Try Our App: [Jam Constructor](https://jam-constructor.herokuapp.com/)
 <li>Django
 <li>PostgreSQL
 ​
+  <br />
 ## Future enhancements:
 ​
 <li> User to add album covers to each songs.
